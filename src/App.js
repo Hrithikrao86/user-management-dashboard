@@ -124,12 +124,13 @@ const currentUsers = sortedUsers.slice(
 
 const addUser = async (newUser) => {
   try {
-    const response = await createUser(newUser);
+    await createUser(newUser);
 
-const user = {
-  ...newUser,
-  id: response.data.id || uuidv4(),
-};
+    const user = {
+      ...newUser,
+      id: uuidv4(),
+      isLocal: true,
+    };
 
     setUsers([...users, user]);
   } catch (error) {
@@ -139,21 +140,24 @@ const user = {
 
 const updateUserData = async (updatedUser) => {
   try {
-    // Call API only for original users
-    if (typeof updatedUser.id === "number") {
-      await editUser(updatedUser.id, updatedUser);
-    }
-
+    // Update local state immediately
     setUsers(
       users.map((user) =>
         user.id === updatedUser.id ? updatedUser : user
       )
     );
+
+    // Try API update, but ignore failures
+    try {
+      await editUser(updatedUser.id, updatedUser);
+    } catch (err) {
+      console.log("Mock API update skipped:", err);
+    }
   } catch (error) {
-    console.log(error);
     alert("Failed to update user.");
   }
 };
+
 
 // Close the form and reset edit state
 
@@ -174,16 +178,20 @@ const openDeletePopup = (id) => {
 
 const confirmDelete = async () => {
   try {
-    if (typeof deleteUserId === "number") {
-      await deleteUser(deleteUserId);
-    }
-
+    // Remove locally first
     setUsers(
       users.filter((user) => user.id !== deleteUserId)
     );
 
     setDeleteUserId(null);
     setShowDeletePopup(false);
+
+    // Try API delete, ignore failures
+    try {
+      await deleteUser(deleteUserId);
+    } catch (err) {
+      console.log("Mock API delete skipped:", err);
+    }
   } catch (error) {
     alert("Failed to delete user.");
   }
