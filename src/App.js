@@ -147,7 +147,9 @@ const updateUserData = async (updatedUser) => {
       )
     );
   } catch (error) {
-    alert("Failed to update user.");
+   console.log(error);
+  console.log(error.response);
+  alert("Failed to update user.");
   }
 };
 
