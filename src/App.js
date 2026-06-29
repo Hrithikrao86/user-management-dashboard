@@ -139,7 +139,10 @@ const user = {
 
 const updateUserData = async (updatedUser) => {
   try {
-    await editUser(updatedUser.id, updatedUser);
+    // Call API only for original users
+    if (typeof updatedUser.id === "number") {
+      await editUser(updatedUser.id, updatedUser);
+    }
 
     setUsers(
       users.map((user) =>
@@ -147,9 +150,8 @@ const updateUserData = async (updatedUser) => {
       )
     );
   } catch (error) {
-   console.log(error);
-  console.log(error.response);
-  alert("Failed to update user.");
+    console.log(error);
+    alert("Failed to update user.");
   }
 };
 
@@ -172,17 +174,16 @@ const openDeletePopup = (id) => {
 
 const confirmDelete = async () => {
   try {
-    await deleteUser(deleteUserId);
+    if (typeof deleteUserId === "number") {
+      await deleteUser(deleteUserId);
+    }
 
     setUsers(
-      users.filter(
-        (user) => user.id !== deleteUserId
-      )
+      users.filter((user) => user.id !== deleteUserId)
     );
 
     setDeleteUserId(null);
     setShowDeletePopup(false);
-
   } catch (error) {
     alert("Failed to delete user.");
   }
