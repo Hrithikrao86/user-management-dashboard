@@ -3,8 +3,6 @@ import "./index.css"
 const UserTable=(props)=>{
 const {
   users,
-  currentPage,
-  usersPerPage,
   setEditingUser,
   setIsEditing,
   setShowUserForm,
