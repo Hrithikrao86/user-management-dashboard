@@ -1,8 +1,11 @@
 import "./index.css"
 
 const UserTable=(props)=>{
-const {
+
+  const {
   users,
+  currentPage,
+  usersPerPage,
   setEditingUser,
   setIsEditing,
   setShowUserForm,
@@ -42,7 +45,7 @@ const {
   ) : (
     users.map((user, index) => (
       <tr key={user.id}>
-        <td>{index + 1}</td>
+        <td>{(currentPage - 1) * usersPerPage + index + 1}</td>
         <td>{user.firstName}</td>
         <td>{user.lastName}</td>
         <td>{user.email}</td>
