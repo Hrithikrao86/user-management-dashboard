@@ -1,10 +1,12 @@
 import "./index.css"
 
-const UserTable=(props)=>{
-const { users,
+const {users,
+  currentPage,
+  usersPerPage,
   setEditingUser,
   setIsEditing,
-  setShowUserForm,openDeletePopup}=props
+  setShowUserForm,
+  openDeletePopup,}=props
 
   // Open the edit form with selected user data
 
@@ -20,7 +22,7 @@ const { users,
    <table className="user-table">
     <thead>
   <tr>
-    <th>ID</th>
+    <th>S.No</th>
     <th>First Name</th>
     <th>Last Name</th>
     <th>Email</th>
@@ -37,9 +39,9 @@ const { users,
 </td>
     </tr>
   ) : (
-    users.map((user) => (
+    users.map((user, index) => (
       <tr key={user.id}>
-        <td>{user.id}</td>
+        <td>{index + 1}</td>
         <td>{user.firstName}</td>
         <td>{user.lastName}</td>
         <td>{user.email}</td>

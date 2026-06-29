@@ -222,8 +222,10 @@ if (loading) {
     setSortBy={setSortBy}
      openFilter={() => setShowFilter(true)}/>
 
-     <UserTable
+    <UserTable
   users={currentUsers}
+  currentPage={currentPage}
+  usersPerPage={usersPerPage}
   setEditingUser={setEditingUser}
   setIsEditing={setIsEditing}
   setShowUserForm={setShowUserForm}
