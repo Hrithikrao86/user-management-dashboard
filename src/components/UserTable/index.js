@@ -1,12 +1,15 @@
 import "./index.css"
 
-const {users,
+const UserTable=(props)=>{
+const {
+  users,
   currentPage,
   usersPerPage,
   setEditingUser,
   setIsEditing,
   setShowUserForm,
-  openDeletePopup,}=props
+  openDeletePopup,
+} = props;
 
   // Open the edit form with selected user data
 
