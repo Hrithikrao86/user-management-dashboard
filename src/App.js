@@ -132,7 +132,12 @@ const addUser = async (newUser) => {
       isLocal: true,
     };
 
-    setUsers([...users, user]);
+    const updatedUsers = [...users, user];
+
+setUsers(updatedUsers);
+
+const totalPages = Math.ceil(updatedUsers.length / usersPerPage);
+setCurrentPage(totalPages);
   } catch (error) {
     alert("Failed to add user.");
   }
