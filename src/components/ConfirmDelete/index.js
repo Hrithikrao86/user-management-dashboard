@@ -9,6 +9,9 @@ const ConfirmDelete = ({
   if (!showDeletePopup) {
     return null;
   }
+
+  // Close delete confirmation popup
+  
   const handleCancel = () => {
     setShowDeletePopup(false);
   

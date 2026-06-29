@@ -9,6 +9,7 @@ const Pagination = (props) => {
     totalUsers,
   } = props;
 
+  // Calculate total number of pages
   const totalPages = Math.ceil(totalUsers / usersPerPage);
 
   return (
@@ -32,6 +33,7 @@ const Pagination = (props) => {
   >
     Next
   </button>
+{/* Select number of users displayed per page */}
 
   <select
     className="page-select"

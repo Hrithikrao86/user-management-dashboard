@@ -41,6 +41,8 @@ const [filters, setFilters] = useState({
   department: "",
 });
 
+// Fetch user data when the application loads
+
   useEffect(() => {
     fetchUsers();
   }, []);
@@ -70,6 +72,8 @@ const [filters, setFilters] = useState({
     setLoading(false);
   }
   };
+
+  // Apply search text and filter popup criteria
 
 const filteredUsers = users.filter((user) => {
 const matchesSearch =
@@ -110,6 +114,9 @@ if (sortBy === "department") {
 const lastUserIndex = currentPage * usersPerPage;
 const firstUserIndex = lastUserIndex - usersPerPage;
 
+
+// Display users for the selected page
+
 const currentUsers = sortedUsers.slice(
   firstUserIndex,
   lastUserIndex
@@ -144,6 +151,8 @@ const updateUserData = async (updatedUser) => {
   }
 };
 
+// Close the form and reset edit state
+
 const closeUserForm = () => {
   setShowUserForm(false);
   setEditingUser(null);
@@ -156,6 +165,8 @@ const openDeletePopup = (id) => {
   setDeleteUserId(id);
   setShowDeletePopup(true);
 };
+
+// Delete the selected user after confirmation
 
 const confirmDelete = async () => {
   try {

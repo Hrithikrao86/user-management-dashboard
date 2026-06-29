@@ -10,12 +10,16 @@ const FilterPopup = ({
     return null;
   }
 
+  // Update filter values
+
   const handleChange = (e) => {
     setFilters({
       ...filters,
       [e.target.name]: e.target.value,
     });
   };
+
+  // Clear all filter fields
 
   const handleReset = () => {
     setFilters({
@@ -27,6 +31,8 @@ const FilterPopup = ({
 
     setShowFilter(false);
   };
+
+  // Apply filters and close popup
 
   const handleApply = () => {
     setShowFilter(false);

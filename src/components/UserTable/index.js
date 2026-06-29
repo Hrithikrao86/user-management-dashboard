@@ -6,12 +6,15 @@ const { users,
   setIsEditing,
   setShowUserForm,openDeletePopup}=props
 
+  // Open the edit form with selected user data
 
   const handleEdit = (user) => {
   setEditingUser(user);
   setIsEditing(true);
   setShowUserForm(true);
 };
+
+// Display users in a tabular format
 
   return (
    <table className="user-table">

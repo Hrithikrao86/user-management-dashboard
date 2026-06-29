@@ -11,6 +11,8 @@ const UserForm = (props) => {
   editingUser,
   isEditing}=props
   
+// Fill the form with selected user details while editing
+
   useEffect(() => {
   if (isEditing && editingUser) {
     setFormData(editingUser);
@@ -27,6 +29,8 @@ const UserForm = (props) => {
     return null;
   }
 
+  // Update form field values
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -34,7 +38,7 @@ const UserForm = (props) => {
     });
   };
 
-  
+// Validate and save the user details  
 
   const handleSubmit = () => {
 

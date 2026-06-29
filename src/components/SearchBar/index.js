@@ -10,9 +10,11 @@ const SearchBar = (props) => {
     openFilter
   } = props;
 
+
    return (
    <div className="search-container">
  <div className="search-box">
+  {/* Search users by name, email or department */}
   <FiSearch className="search-icon" />
 
   <input
@@ -23,6 +25,7 @@ const SearchBar = (props) => {
     onChange={(e) => setSearchInput(e.target.value)}
   />
 </div>
+{/* Sort users */}
 
   <select
     className="sort-select"
